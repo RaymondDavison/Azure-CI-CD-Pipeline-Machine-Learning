@@ -1,10 +1,17 @@
-#!/usr/bin/env bash
+from locust import HttpUser, between, task
 
-PORT=5000
-echo "Port: $PORT"
+class WebsiteUser(HttpUser):
+    host = "https://<yourappname>.azurewebsites.net:443"
+    wait_time = between(5, 15)
 
-# POST method predict
-curl -d '{
+    @task
+    def index(self):
+        self.client.get("/")
+
+    @task
+    def predict(self):
+        self.client.post("/predict", json={
+            {
    "CRIM": {
       "0":0.21124
    },
@@ -44,6 +51,5 @@ curl -d '{
    "LSTAT":{
       "0":29.93
    }
-}'\
-     -H "Content-Type: application/json" \
-     -X POST http://localhost:$PORT/predict
+}
+        })
