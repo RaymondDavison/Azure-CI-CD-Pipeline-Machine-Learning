@@ -1,2 +1,6 @@
+Flask==2.0.3
+pandas
+scikit-learn
+joblib
 pylint
 pytest
