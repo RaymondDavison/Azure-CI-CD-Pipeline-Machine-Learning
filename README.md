@@ -6,8 +6,7 @@ Continous Integration will be done with `Github Actions` along with a `Makefile`
 
 The application is a Python-based machine learning application that works with Flask web framework. 
 
-A pre-trained, sklearn model that has been trained to predict housing prices in Boston according to several features, such as average rooms in a home and data about highway access, teacher-to-pupil ratios, and so on is presented.
-![alt](https://github.com/RaymondDavison/Azure-CI-CD-Pipeline-Machine-Learning/blob/main/screenshots/0.1-Architectural%20Diagram.png)
+A pre-trained, sklearn model that has been trained to predict housing prices in Boston according to several features, such as average rooms in a home and data about highway access, teacher-to-pupil ratios, and so on is presented.![alt](https://github.com/RaymondDavison/Azure-CI-CD-Pipeline-Machine-Learning/blob/main/screenshots/0.1-Architectural%20Diagram.png)
 
 ## Project Plan
 <TODO: Project Plan
