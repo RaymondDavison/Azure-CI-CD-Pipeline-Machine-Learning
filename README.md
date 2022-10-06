@@ -12,8 +12,8 @@ A pre-trained, sklearn model that has been trained to predict housing prices in 
 ## Project Plan
 <TODO: Project Plan
 
-* A link to a Trello board for the project
-* A link to a spreadsheet that includes the original and final project plan>
+* [A link to a Trello board for the project](https://trello.com/b/xWzUJi8a/build-a-machine-learning-ci-cd-pipeline-with-azure-devops)
+* [A link to a spreadsheet that includes the original and final project plan](https://docs.google.com/spreadsheets/d/15L5KgQH1k4cs6h2Azz1qvHVSDlwcPpIN3TNfSySJvT8/edit#gid=1348135932)
 
 ## Instructions
 
