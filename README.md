@@ -7,7 +7,7 @@ Continous Integration will be done with `Github Actions` along with a `Makefile`
 The application is a Python-based machine learning application that works with Flask web framework. 
 
 A pre-trained, sklearn model that has been trained to predict housing prices in Boston according to several features, such as average rooms in a home and data about highway access, teacher-to-pupil ratios, and so on is presented.
-
+![alt](https://github.com/RaymondDavison/Azure-CI-CD-Pipeline-Machine-Learning/blob/main/screenshots/0.1-Architectural%20Diagram.png)
 
 ## Project Plan
 <TODO: Project Plan
@@ -16,10 +16,6 @@ A pre-trained, sklearn model that has been trained to predict housing prices in 
 * A link to a spreadsheet that includes the original and final project plan>
 
 ## Instructions
-
-![alt](https://github.com/RaymondDavison/Azure-CI-CD-Pipeline-Machine-Learning/blob/main/screenshots/0.1-Architectural%20Diagram.png)
-
-<TODO:  Instructions for running the Python project.  How could a user with no context run this project without asking you for any help.  Include screenshots with explicit steps to create that work. Be sure to at least include the following screenshots:
 
 Clone the repository on Azure Cloud Shell by running the following command:
 
@@ -62,6 +58,39 @@ Create an App Service in Azure with a unique name by running the following comma
 
 `az webapp up -n <app-unique-name>`
 
+Create the pipeline in Azure DevOps as follows: 
+
+- Go to https://dev.azure.com and sign in.
+- Create a new private project.
+- Under Project Settings create a new service connection to Azure Resource Manager, scoped to your subscription and resource group.
+- Create a new pipeline linked to your GitHub repo.
+The following screenshots shows the successfull running of the pipeline.
+![alt](https://github.com/RaymondDavison/Azure-CI-CD-Pipeline-Machine-Learning/blob/main/screenshots/BuildJob%20Screenshot%202022-10-05%20113742.png)
+![alt](https://github.com/RaymondDavison/Azure-CI-CD-Pipeline-Machine-Learning/blob/main/screenshots/DeploymentJob%20Screenshot%202022-10-05%20113857.png)
+
+To test the app running in Azure App Service, replace the URL of the make_predict_azure_app.sh script with that of the app. Then run the following script:
+
+`./make_predict_azure_app.sh`
+
+If it's working the output should look like the following:
+![alt](https://github.com/RaymondDavison/Azure-CI-CD-Pipeline-Machine-Learning/blob/main/screenshots/make_predict_azure_app.sh%20result%20Screenshot%202022-10-05%20093600.png)
+
+You can also visit the URL of the App Service via the browser and you should see the following page:
+![alt](https://github.com/RaymondDavison/Azure-CI-CD-Pipeline-Machine-Learning/blob/main/screenshots/sklearn%20predictionhome%20Screenshot%202022-10-05%20092900.png)
+
+Also, the app's logs can be viewed by running:
+
+`az webapp tail log`
+![alt](https://github.com/RaymondDavison/Azure-CI-CD-Pipeline-Machine-Learning/blob/main/screenshots/1-tail%20logs%20Screenshot%202022-10-05%20103738.png)
+
+## Load testing
+We can use locust to do a load test against our application. In this example, the load test is done against the app running locally.
+
+`locust -f locustfile.py --headless -u 20 -r 5 -t 20s`
+output 
+![alt](https://github.com/RaymondDavison/Azure-CI-CD-Pipeline-Machine-Learning/blob/main/screenshots/locustfile%20output%20Screenshot%202022-10-05%20105013.png)
+
+
 * Successful deploy of the project in Azure Pipelines.  [Note the official documentation should be referred to and double checked as you setup CI/CD](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops).
 
 * Running Azure App Service from Azure Pipelines automatic deployment
@@ -69,19 +98,10 @@ Create an App Service in Azure with a unique name by running the following comma
 * Successful prediction from deployed flask app in Azure Cloud Shell.  [Use this file as a template for the deployed prediction](https://github.com/udacity/nd082-Azure-Cloud-DevOps-Starter-Code/blob/master/C2-AgileDevelopmentwithAzure/project/starter_files/flask-sklearn/make_predict_azure_app.sh).
 The output should look similar to this:
 
-```bash
-udacity@Azure:~$ ./make_predict_azure_app.sh
-Port: 443
-{"prediction":[20.35373177134412]}
-```
-
-* Output of streamed log files from deployed application
-
-> 
 
 ## Enhancements
 
-<TODO: A short description of how to improve the project in the future>
+This is so far a great job done. At this moment, one can start thinking about how to deploy to production environments. It would be a nice idea to always create a branch for any modifications which can be tested and deployed to a staging environment before before deploying to production.
 
 ## Demo 
 
